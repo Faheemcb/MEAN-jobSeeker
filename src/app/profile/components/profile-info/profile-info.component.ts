@@ -13,6 +13,7 @@ import { Skill } from '../../models/skill';
 export class ProfileInfoComponent implements OnInit{
   user: any;
   isEditMode = false;
+  isEditQualification = false;
   isDescriptionEditMode =  false;
   skillSection:any='';
   skill:Skill[]=[]
@@ -58,6 +59,10 @@ export class ProfileInfoComponent implements OnInit{
       toggleEditMode() {
         this.isEditMode = !this.isEditMode;
       } 
+
+      toggleEditqualification(){
+        this.isEditQualification = !this.isEditQualification
+      }
       // getProfile(){
       //   this.profileService.getAllSkill().subscribe(response=>{
       //     console.log(response);

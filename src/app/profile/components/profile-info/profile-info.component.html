@@ -56,7 +56,7 @@
                 <ng-container *ngIf="!isEditMode; else editSection" >
                 <ng-container >
                   <ul>
-                    <li>GoLang</li>
+                    <li>SWIFT</li>
                   </ul>
                 </ng-container>
                 <hr>
@@ -91,9 +91,48 @@
 <div class="row">
   <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
     <h5 class="h5-fluid text-dark">Qualification</h5>
+    <ng-container *ngIf="!isEditQualification; else editSections"  >
+    <ng-container>
+      <ul>
+        <li>MBA</li>
+      </ul>
+      </ng-container>
+    <hr>
+    <div class="d-flex justify-content-end">
+    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditqualification()" ><i class="fas fa-edit"></i></button>
+    </div>
+    <!-- <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+      <p>{{ errorMessage }}</p>
+    </div> -->
+    </ng-container>
+
+    <ng-template #editSections>
+      <form #addSkill="ngForm"  >
+          <div class="form-group">
+              <!-- <textarea class="form-control" id="skillSection" name="skillSection"
+                  [(ngModel)]="skillSection" required></textarea> -->
+                  <select name="skillSection" style="width: 300px;">
+                    <option >CSS--Cascade Style Sheet</option>
+                  </select>
+          </div>
+         
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary"
+          (click)="toggleEditqualification()"  >Cancel</button>
+      </form>
+    </ng-template>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
+    <h5 class="h5-fluid text-dark">WORKEXPERIENCE</h5>
     <ng-container  >
     <ng-container>
-      <p>btech</p>
+      <ul>
+        <li>REACT JS DEVELOPER</li>
+      </ul>
       </ng-container>
     <hr>
     <div class="d-flex justify-content-end">
@@ -107,11 +146,16 @@
     <ng-template #editSection>
       <form #addSkill="ngForm"  >
           <div class="form-group">
-              <!-- <textarea class="form-control" id="skillSection" name="skillSection"
-                  [(ngModel)]="skillSection" required></textarea> -->
-                  <select name="skillSection" style="width: 300px;">
-                    <option >CSS--Cascade Style Sheet</option>
-                  </select>
+              <label for="">JobTitle</label>
+              <input type="text" name="" id="">
+              <label for="">CompanyName</label>
+              <input type="text" name="" id="">
+              <label for="">Summary</label>
+              <input type="text" name="" id="">
+              <label for="">ServiceStart</label>
+              <input type="datetime" name="" id="">
+              <label for="">ServiceEnd</label>
+              <input type="datetime" name="" id="">
           </div>
          
           <button type="submit" class="btn btn-primary">Save</button>
@@ -122,6 +166,8 @@
   </div>
 </div>
 </div>
+
+
 <!-- </div>
     </div> -->
 </div>
