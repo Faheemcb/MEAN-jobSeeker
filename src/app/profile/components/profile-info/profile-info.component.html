@@ -20,8 +20,8 @@
                   </div>
                 </label>
                 <input type="file" id="profilePictureInput" class="d-none">
-                <h5 class="h5-fluid text-center text-dark">{{user.firstName}} {{user.lastName}}</h5>
-                <p class="text-center small">{{user.email}}</p>
+                <h5 class="h5-fluid text-center text-dark">Mohammed Faheem</h5>
+                <p class="text-center small">gmail.com</p>
                 <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
                   <form>
                     <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
@@ -35,16 +35,16 @@
                   </form>
                 </div>
                 <!-- <img class="img-fluid mr-3" src="../../../../assets/images/message-2 - Copy.png">{{user.email}}<br> -->
-                <img class="img-fluid mr-3" src="../../../../assets/images/g1.png">{{user.phone}}<br><br>
+                <img class="img-fluid mr-3" src="../../../../assets/images/g1.png">5154848548<br><br>
                 <img class="img-fluid mr-3" src="assets/images/location.png">location
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
-                <h5 class="h5-fluid text-dark">{{ isEditMode ? 'Edit Seeker Skill' : 'Skill' }}</h5>
+                <h5 class="h5-fluid text-dark">MEAN</h5>
                 <ng-container *ngIf="!isEditMode; else editSection" >
-                <ng-container *ngFor="let skills of addedSkill">
-                  <p>{{skills.name}}</p>
+                <ng-container>
+                  <p>Node JS</p>
                   </ng-container>
                 <hr>
                 <div class="d-flex justify-content-end">
@@ -61,12 +61,11 @@
                           <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                               [(ngModel)]="skillSection" required></textarea> -->
                               <select (ngModel)="skillSection"name="skillSection" style="width: 300px;">
-                                <option *ngFor="let item of dropDownData" [value]="item.id">{{ item.name }}--{{item.description}}</option>
+                                <option >CSS--Cascade Style Sheet</option>
                               </select>
                       </div>
                      
-                      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save'
-                          }}</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
                       <button type="button" class="btn btn-secondary"
                           (click)="toggleEditMode()">Cancel</button>
                   </form>
@@ -95,8 +94,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Skills</h5>
                     <ul class="list-unstyled horizontal-list">
-                      <li text-secondary *ngFor="let skill of user.skills"><span class="circle-bullet"></span> {{skill}}
-                      </li>
+                      <li text-secondary ><span class="circle-bullet"></span> Java </li>
                       <br>
 
                     </ul>
@@ -108,7 +106,7 @@
                       <div id="editForm" class="collapse">
                         <form>
                           <div class="form-group">
-                            <label for="description" class="font-weight-bold">Update Your Skills</label>
+                            <label for="description" class="font-weight-bold">Update Your Ski</label>
                             <textarea class="form-control rounded" id="description" rows="3"
                               placeholder="Enter Your Skills"></textarea>
                           </div>
