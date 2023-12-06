@@ -120,6 +120,53 @@
                 </div>
               </div>
             </div>
+
+<!-- --------------------------------------------- -->
+
+            <div class="col-md-7">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="card">
+                    <div class="row g-0">
+                      <div class="col-md-1 mt-3 ml-3">
+                        <img src="../../../../assets/images/crown.png"
+                          class="rounded-circle d-flex justify-content-center align-items-center"
+                          style="width: 40px; height: 40px; background-color: #E8F6FF;" alt="skills img">
+                      </div>
+                      <div class="col-md-10 mt-2 mr-5">
+                        <div class="card-body">
+                          <h5 class="card-title">qualification</h5>
+                          <ul class="list-unstyled horizontal-list">
+                            <li text-secondary *ngFor="let skill of user.skills"><span class="circle-bullet"></span> {{skill}}
+                            </li>
+                            <br>
+      
+                          </ul>
+                          <hr>
+                          <div class="d-flex justify-content-end">
+      
+                            <button class="btn edit-button" data-toggle="collapse" data-target="#editForm"><img
+                                src="assets/images/edit-2.png" class="img-thumbnail" alt="edit img"></button>
+                            <div id="editForm" class="collapse">
+                              <form>
+                                <div class="form-group">
+                                  <label for="description" class="font-weight-bold">Update Your Skills</label>
+                                  <textarea class="form-control rounded" id="description" rows="3"
+                                    placeholder="Enter Your Skills"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success" style="background-color: #087808;">Save</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
           </div>
         </div>
 
