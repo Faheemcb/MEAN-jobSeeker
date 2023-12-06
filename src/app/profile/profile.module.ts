@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile.component';
 import { SharedModule } from "../shared/shared.module";
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { AddResumeComponent } from './components/add-resume/add-resume.component';
-import { QualificationComponent } from './components/qualification/qualification.component';
+
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { QualificationComponent } from './components/qualification/qualification
         ProfileComponent,
         ProfileInfoComponent,
         AddResumeComponent,
-        QualificationComponent
+       
     ],
     imports: [
         CommonModule,
