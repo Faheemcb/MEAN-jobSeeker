@@ -86,56 +86,52 @@
               </div>
           </div>
 
-<!-- --------------------------------------------- -->
 
-            <div class="col-md-7">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-11">
-                  <div class="card">
-                    <div class="row g-0">
-                      <div class="col-md-1 mt-3 ml-3">
-                        <img src="../../../../assets/images/crown.png"
-                          class="rounded-circle d-flex justify-content-center align-items-center"
-                          style="width: 40px; height: 40px; background-color: #E8F6FF;" alt="skills img">
-                      </div>
-                      <div class="col-md-10 mt-2 mr-5">
-                        <div class="card-body">
-                          <h5 class="card-title">qualification</h5>
-                          <ul class="list-unstyled horizontal-list">
-                            <li text-secondary ><span class="circle-bullet"></span>BCA
-                            </li>
-                            <br>
-      
-                          </ul>
-                          <hr>
-                          <div class="d-flex justify-content-end">
-      
-                            <button class="btn edit-button" data-toggle="collapse" data-target="#editForm"><img
-                                src="assets/images/edit-2.png" class="img-thumbnail" alt="edit img"></button>
-                            <div id="editForm" class="collapse">
-                              <form>
-                                <div class="form-group">
-                                  <label for="description" class="font-weight-bold">Update Your Skills</label>
-                                  <textarea class="form-control rounded" id="description" rows="3"
-                                    placeholder="Enter Your Skills"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-success" style="background-color: #087808;">Save</button>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<br>
+<div class="row">
+  <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
+    <h5 class="h5-fluid text-dark">Qualification</h5>
+    <ng-container *ngIf="!isEditMode; else editSection" >
+    <ng-container>
+      <p>btech</p>
+      </ng-container>
+    <hr>
+    <div class="d-flex justify-content-end">
+    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()"><i class="fas fa-edit"></i></button>
+    </div>
+    <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+      <p>{{ errorMessage }}</p>
+    </div>
+    </ng-container>
 
+    <ng-template #editSection>
+      <form #addSkill="ngForm"  (ngSubmit)="updateProfile(addSkill)">
+          <div class="form-group">
+              <!-- <textarea class="form-control" id="skillSection" name="skillSection"
+                  [(ngModel)]="skillSection" required></textarea> -->
+                  <select (ngModel)="skillSection"name="skillSection" style="width: 300px;">
+                    <option >CSS--Cascade Style Sheet</option>
+                  </select>
+          </div>
+         
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary"
+              (click)="toggleEditMode()">Cancel</button>
+      </form>
+    </ng-template>
+  </div>
+</div>
+</div>
+<!-- </div>
+    </div> -->
+</div>
+</div>
+
+</div>
 
 
 
           </div>
         </div>
 
-      </div>
-    </div>
-
-  </div>
+  
