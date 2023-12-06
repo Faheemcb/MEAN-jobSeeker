@@ -1,0 +1,129 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- <div class="col-md-12">
+                    <div class="row"> -->
+          <div class="col-md-11 ml-4 text-secondary">
+            <div class="row">
+              <div class="col-md-12 border rounded mr-4 p-3 mb-4">
+                <label for="profilePictureInput">
+                  <div class="profile-picture-wrapper">
+                    <img class="img-fluid mx-auto d-block p-5" src="assets/images/leslie.png" width:10 height:10
+                      id="profilePicture">
+                    <div class="upload-overlay">
+                      <i class="fa fa-upload fa-5x"></i>
+                      <span>Upload Picture</span>
+                    </div>
+                  </div>
+                </label>
+                <input type="file" id="profilePictureInput" class="d-none">
+                <h5 class="h5-fluid text-center text-dark">{{user.firstName}} {{user.lastName}}</h5>
+                <p class="text-center small">{{user.email}}</p>
+                <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+                  <form>
+                    <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
+                                        <input type="file" class="form-control d-none" id="fileInput" name="fileInput"> -->
+                    <!-- <button type="button" class="btn  btn-sm btn-outline-primary">Upload</button> -->
+                    <label for="fileInput" class="form-label"><img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
+                    <div class="input-group">
+                      <input type="file" class="form-control" id="fileInput" aria-describedby="uploadButton">
+                      <button class="btn btn-primary" type="button" id="uploadButton">Upload</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- <img class="img-fluid mr-3" src="../../../../assets/images/message-2 - Copy.png">{{user.email}}<br> -->
+                <img class="img-fluid mr-3" src="../../../../assets/images/g1.png">{{user.phone}}<br><br>
+                <img class="img-fluid mr-3" src="assets/images/location.png">location
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
+                <h5 class="h5-fluid text-dark">{{ isEditMode ? 'Edit Seeker Skill' : 'Skill' }}</h5>
+                <ng-container *ngIf="!isEditMode; else editSection" >
+                <ng-container *ngFor="let skills of addedSkill">
+                  <p>{{skills.name}}</p>
+                  </ng-container>
+                <hr>
+                <div class="d-flex justify-content-end">
+                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()"><i class="fas fa-edit"></i></button>
+                </div>
+                <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+                  <p>{{ errorMessage }}</p>
+                </div>
+                </ng-container>
+
+                <ng-template #editSection>
+                  <form #addSkill="ngForm"  (ngSubmit)="updateProfile(addSkill)">
+                      <div class="form-group">
+                          <!-- <textarea class="form-control" id="skillSection" name="skillSection"
+                              [(ngModel)]="skillSection" required></textarea> -->
+                              <select (ngModel)="skillSection"name="skillSection" style="width: 300px;">
+                                <option *ngFor="let item of dropDownData" [value]="item.id">{{ item.name }}--{{item.description}}</option>
+                              </select>
+                      </div>
+                     
+                      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save'
+                          }}</button>
+                      <button type="button" class="btn btn-secondary"
+                          (click)="toggleEditMode()">Cancel</button>
+                  </form>
+                </ng-template>
+              </div>
+          </div>
+          </div>
+          <!-- </div>
+                </div> -->
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-7">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-11">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-md-1 mt-3 ml-3">
+                  <img src="../../../../assets/images/bulb.png"
+                    class="rounded-circle d-flex justify-content-center align-items-center"
+                    style="width: 40px; height: 40px; background-color: #E8F6FF;" alt="skills img">
+                </div>
+                <div class="col-md-10 mt-2 mr-5">
+                  <div class="card-body">
+                    <h5 class="card-title">Skills</h5>
+                    <ul class="list-unstyled horizontal-list">
+                      <li text-secondary *ngFor="let skill of user.skills"><span class="circle-bullet"></span> {{skill}}
+                      </li>
+                      <br>
+
+                    </ul>
+                    <hr>
+                    <div class="d-flex justify-content-end">
+
+                      <button class="btn edit-button" data-toggle="collapse" data-target="#editForm"><img
+                          src="assets/images/edit-2.png" class="img-thumbnail" alt="edit img"></button>
+                      <div id="editForm" class="collapse">
+                        <form>
+                          <div class="form-group">
+                            <label for="description" class="font-weight-bold">Update Your Skills</label>
+                            <textarea class="form-control rounded" id="description" rows="3"
+                              placeholder="Enter Your Skills"></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-success" style="background-color: #087808;">Save</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>

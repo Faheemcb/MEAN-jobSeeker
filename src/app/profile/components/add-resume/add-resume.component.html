@@ -1,0 +1,111 @@
+
+<section class="vh-25" >
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+  
+          <h1 class="text-white mb-4">Apply for a job</h1>
+            <form #uploadCV="ngForm" (ngSubmit)="onSubmit(uploadCV)">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body">
+  
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Profile Name</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="text" class="form-control form-control-lg" id="profileName" name="profileName" ngModel>
+  
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Title</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="text" class="form-control form-control-lg"  id="title" name="title" ngModel/>
+  
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Profile Summary</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <textarea class="form-control" rows="3" placeholder="Message sent to the employer"  id="profileSummary" name="profileSummary" ngModel></textarea>
+  
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Cover Letter</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <textarea class="form-control" rows="3" placeholder="Message sent to the employer"  id="coverLetter" name="coverLetter" ngModel></textarea>
+  
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+  
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+  
+                  <h6 class="mb-0">Upload CV</h6>
+  
+                </div>
+                <div class="col-md-9 pe-5">
+  
+                  <input type="file"  class="form-control form-control-lg" id="file" name="file" (change)="onFileChange($event)" type="file" />
+                  <div class="small text-muted mt-2">Upload your CV/Resume </div>
+                  <select class="selectpicker" name="selectedOption" ngModel>
+                    <option value="" disabled selected>Select CV</option>
+                    <option *ngFor="let item of dropdownData" [value]="item.id">{{ item.title }}</option>
+                  </select>
+                </div>
+                <div class="col-md-9 pe-5">
+                
+              </div>
+                <!-- <div>
+                    <select (change)="onMenuItemSelected($event)">
+                      <option value="">Select an option</option>
+                      <option *ngFor="let item of menuItems" [value]="item.id">{{ item.name }}</option>
+                    </select>
+                  </div> -->
+                  <!-- <div>
+                    <object type="application/pdf" [data]="'data:application/pdf;base64,' + base64PDFData"></object>
+                  </div> -->
+                  
+              </div>
+  
+              <hr class="mx-n3">
+              <div class="px-5 py-4">
+                <button type="submit" class="btn btn-primary btn-lg">Send application</button>
+              </div>
+             </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

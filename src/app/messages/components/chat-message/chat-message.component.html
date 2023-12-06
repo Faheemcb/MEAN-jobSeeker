@@ -1,0 +1,79 @@
+<div class="container">
+<div class="row ">
+    <div class="col-md-6 border h-75">
+        <div class="row">
+            <div class="col-md-12  p-3">
+                <h5>All Messages</h5>
+                <span class="float-right"></span>
+            </div>
+        </div>
+        <ng-container *ngFor="let appliedJob of appliedJobList">
+        <div class="row pb-2 member p-1" (click)="chatMessage(appliedJob.company.id,appliedJob.company.name)">    
+            <div class="col-md-2 ">
+                    <img class="img-fluid float-left" src="../../../../assets/images/Ellipse 175 (1).png" alt="Logo"><br>
+                    <span class="text-success">&bull;</span>
+            </div>
+            <div class="col-md-8 ">
+                <span class="font-weight-bold">{{appliedJob.company.name}}</span><br>
+                <span class="text-secondery small">{{appliedJob.job.title}}</span>
+            </div>    
+            <div class="col-md-2">
+                <span class="float-right  small">10:55 AM</span>
+                    <span class="rounded-circle bg-primary text-white "></span>
+            </div>
+        </div>
+    </ng-container>
+    </div>
+    <ng-container *ngIf="show">
+    <div class="col-md-6 border bg-light h-75">
+        <div class="row border-bottom p-2">
+            <div class="col-md-2 ">
+                <img class="img-fluid float-left" src="../../assets/images/Ellipse 175.png" alt="Logo"><br>
+                <span class="text-success">&bull;</span>
+            </div>
+            <div class="col-md-8 ">
+                <span class="font-weight-bold">{{companyName}}</span><br>
+                <span class="text-secondery small">Online now</span>
+            </div>    
+            <div class="col-md-2">
+            
+            </div>
+        </div>
+        <div class="row justify-content-end" >
+            <ng-container *ngFor="let chat of messages">
+
+            <div class="col-md-8 mt-2 p-2 " *ngIf="chat.sentBy.email==email">
+                <div class="content-box float-right"></div>
+                    <div class="col col-md-auto p-2 pb-3 w-auto outmsg mr-4 text-white ">
+                        <p>{{chat.content}}</p>
+                        <span class="float-right  small">10:56 AM</span>
+                    </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-md-8 mb-2 mt-2 " *ngIf="chat.sentBy.email!=email">
+                    <div class="content-box1 float-left "></div>
+                    <div class="col col-md-auto p-2 inmsg w-auto  text-secondary float-left">
+                        <p>{{chat.content}}</p>
+                        <span class="float-right  small">10:56 AM</span>
+                    </div>  
+                </div>
+            </div>
+
+        </ng-container>
+        </div>
+      
+        <div class="row justify-content-center">
+            <div class="col-md-11 bg-white d-inline">
+                <form #myForm="ngForm">
+                <div class="form-group d-flex d-inline">
+                    <input type="text"   #messageInput class="form-control border-0 " (keyup.enter)="sendMessage(messageInput,messageInput.value)">
+                    <span class="btn float-right"><img class="img-fluid" src="../../../../assets/images/Subtract.png"></span>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-container>
+</div>
+</div>

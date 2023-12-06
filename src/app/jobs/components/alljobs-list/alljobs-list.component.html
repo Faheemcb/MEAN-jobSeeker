@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <ng-container *ngFor="let job of jobs">
+
+        <div class="card" style="width:100%; margin-bottom: 10px;" id="card" >
+         
+          <div class="card-body">
+            <div class="col text-right">
+             <button class="image-button" (click)="saveJob(job?.id)"><img src="../../../../assets/images/archive-minus.jpg" alt="Save Job" class="float-right" width="20" height="20"></button> 
+              </div>
+            <div class="d-flex" (click)="viewJobDetail(job)">
+              <img src="../assets/images/Rectangle 14.png" alt="Card image" class="float-right" width="50" height="50">
+            
+              <div class="ms-4">
+             
+                <h5 class="card-title mb-1 pl-3">{{job?.jobTitle}}</h5>
+                <p class="card-text mb-0 pl-3"><span class="text-primary">{{job?.industryName}}</span><span
+                    class="px-2">&bull;</span><span>{{job?.locationName}}</span></p>
+              </div>
+            </div>
+            <br>
+            <p class="card-text">{{job.jobSummary}}</p>
+
+            <!-- <span class="badge badge-pill text-light p-2 m-2"
+              style="background-color: #CAC3AA;">{{job.type}}
+            </span> -->
+            <!-- <span class="badge badge-pill text-light p-2 m-2"
+              style="background-color:  #CAC3AA;">{{job.experienceLevel}}</span> -->
+            <!-- <span class="badge badge-pill text-light p-2 m-2" style="background-color:  #CAC3AA;">{{job.salary}}
+            </span> -->
+            <!-- <span class="badge badge-pill text-light p-2 m-2" style="background-color:  #CAC3AA;">{{job.workplace}}
+            </span> -->
+            <span class="badge badge-pill text-light p-2 m-2" style="background-color:  #CAC3AA;">{{job?.locationName}}
+            </span>
+
+          </div>
+          </div>
+      </ng-container>
+
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+                <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">Previous</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link">{{ currentPage }}</a>
+            </li>
+            <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+                <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    </div>
+
+    <div class="col-md-6">
+
+      <app-all-jobs-detail [job]="selectedJob"></app-all-jobs-detail>
+
+    </div>
+  </div>
+</div>

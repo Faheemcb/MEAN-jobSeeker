@@ -1,0 +1,26 @@
+.content-box
+{
+
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #467fe7; 
+
+}
+.inmsg
+{
+    background-color: #dbe9f1;
+    border-radius: 0px 5px 5px 5px;
+}
+.content-box1
+{
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid   #dbe9f1;
+}
+.outmsg
+{
+    background-color: #467fe7;
+    border-radius: 5px 0px 5px 5px;
+}
+.member:hover
+{
+ background-color: rgb(233, 237, 245);
+}
