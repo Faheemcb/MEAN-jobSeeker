@@ -37,16 +37,16 @@ export class LoginComponent {
     // sessionStorage.setItem('jobSeekerId',response['id']);
     // sessionStorage.setItem('username',response['userName']);
     this.router.navigate(['jobseeker-home/findAllJobs']);
-    this.getProfile();
+    // this.getProfile();
 // })
  }
 
- getProfile(){
-this.profileService.getProfile().subscribe(response=>{
-console.log("profileId------------"+response.id);
-sessionStorage.setItem('profileId',response.id);
-})
- }
+//  getProfile(){
+// this.profileService.getProfile().subscribe(response=>{
+// console.log("profileId------------"+response.id);
+// sessionStorage.setItem('profileId',response.id);
+// })
+//  }
 
 }
   

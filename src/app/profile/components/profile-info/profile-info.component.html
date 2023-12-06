@@ -54,33 +54,33 @@
               <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
                 <h5 class="h5-fluid text-dark">SKILLS</h5>
                 <ng-container *ngIf="!isEditMode; else editSection" >
-                <ng-container>
+                <ng-container >
                   <ul>
-                    <li>NODE JS</li>
+                    <li>GoLang</li>
                   </ul>
                 </ng-container>
                 <hr>
                 <div class="d-flex justify-content-end">
-                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()"><i class="fas fa-edit"></i></button>
+                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()" ><i class="fas fa-edit"></i></button>
                 </div>
-                <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+                <!-- <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
                   <p>{{ errorMessage }}</p>
-                </div>
+                </div> -->
                 </ng-container>
 
                 <ng-template #editSection>
-                  <form #addSkill="ngForm"  (ngSubmit)="updateProfile(addSkill)">
+                  <form #addSkill="ngForm" >
                       <div class="form-group">
                           <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                               [(ngModel)]="skillSection" required></textarea> -->
-                              <select (ngModel)="skillSection"name="skillSection" style="width: 300px;">
-                                <option >CSS--Cascade Style Sheet</option>
+                              <select name="skillSection" style="width: 300px;" >
+                                <option *ngFor="let item of skill">{{item.name}}</option>
                               </select>
                       </div>
                      
                       <button type="submit" class="btn btn-primary">Save</button>
                       <button type="button" class="btn btn-secondary"
-                          (click)="toggleEditMode()">Cancel</button>
+                         (click)="toggleEditMode()" >Cancel</button>
                   </form>
                 </ng-template>
               </div>
@@ -91,32 +91,32 @@
 <div class="row">
   <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
     <h5 class="h5-fluid text-dark">Qualification</h5>
-    <ng-container *ngIf="!isEditMode; else editSection" >
+    <ng-container  >
     <ng-container>
       <p>btech</p>
       </ng-container>
     <hr>
     <div class="d-flex justify-content-end">
-    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()"><i class="fas fa-edit"></i></button>
+    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" ><i class="fas fa-edit"></i></button>
     </div>
-    <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+    <!-- <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
       <p>{{ errorMessage }}</p>
-    </div>
+    </div> -->
     </ng-container>
 
     <ng-template #editSection>
-      <form #addSkill="ngForm"  (ngSubmit)="updateProfile(addSkill)">
+      <form #addSkill="ngForm"  >
           <div class="form-group">
               <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                   [(ngModel)]="skillSection" required></textarea> -->
-                  <select (ngModel)="skillSection"name="skillSection" style="width: 300px;">
+                  <select name="skillSection" style="width: 300px;">
                     <option >CSS--Cascade Style Sheet</option>
                   </select>
           </div>
          
           <button type="submit" class="btn btn-primary">Save</button>
           <button type="button" class="btn btn-secondary"
-              (click)="toggleEditMode()">Cancel</button>
+             >Cancel</button>
       </form>
     </ng-template>
   </div>
