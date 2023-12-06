@@ -8,31 +8,13 @@ import { environment } from 'src/environments/environments';
 export class ProfileService {
 
   constructor(private http:HttpClient) { }
-  jobseekerId=sessionStorage.getItem('jobSeekerId');
-  profileId=sessionStorage.getItem('profileId');
 
-  uploadCV(jobSeekerId:any,profileId:any,profileName:any,profileSummary:any,title:any,formData:FormData,file:File){
-    const fd = new FormData();
-    fd.append('image', file,file.name);
-    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-    return this.http.post<any[]>(environment.baseurl +'api/v1/'+`job-seeker/upload-resume?jobSeekerId=${jobSeekerId}&profileId=${profileId}&profileName=${profileName}&profileSummary=${profileSummary}&title=${title}`,fd,{headers})
-  }
-  getProfile()
-  {
-    return this.http.get<any>(environment.baseurl+this.jobseekerId+'/profile');
-  }
-  getResume(){
-    return this.http.get<any>(environment.baseurl+'api/v1/job-seeker/getResume/'+this.profileId);
+  getallskills(){
+    return this.http.get<any[]>(environment.baseurl + '/api/v1/skills')
   }
 
-  addSkill(data:any[]){
-   
-    return this.http.post<any>(environment.baseurl+this.jobseekerId+'/profile/'+this.profileId+'/skills',data);
-  }
-  getAllSkill(){
-    return this.http.get<any>(environment.baseurl+'skills');
-  }
-  getSkillByUser(){
-    return this.http.get<any>(environment.baseurl+'api/v1/job-seeker/getResume/'+this.profileId);
+  deleteSkill(id:number){
+    return this.http.delete(environment.baseurl + `/api/v1/skills/${id}`)
+
   }
 }

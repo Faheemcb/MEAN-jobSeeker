@@ -37,10 +37,10 @@ export class AddResumeComponent {
     //     const profileId=data.id;
     //     sessionStorage.setItem('profileId',profileId)
     // })
-    this.profileService.getResume().subscribe(data=>{
-      console.log(data);
-      this.dropdownData = data;
-    })
+    // this.profileService.getResume().subscribe(data=>{
+    //   console.log(data);
+    //   this.dropdownData = data;
+    // })
   }
 
   onMenuItemSelected(event: any) {
