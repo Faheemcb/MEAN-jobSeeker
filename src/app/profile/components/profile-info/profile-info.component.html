@@ -107,7 +107,7 @@
     </ng-container>
 
     <ng-template #editSections>
-      <form #addSkill="ngForm"  >
+      <form #addqualification="ngForm"  >
           <div class="form-group">
               <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                   [(ngModel)]="skillSection" required></textarea> -->
@@ -128,7 +128,7 @@
 <div class="row">
   <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
     <h5 class="h5-fluid text-dark">WORKEXPERIENCE</h5>
-    <ng-container  >
+    <ng-container *ngIf="!isEditworkexperience; else editexps" >
     <ng-container>
       <ul>
         <li>REACT JS DEVELOPER</li>
@@ -136,32 +136,51 @@
       </ng-container>
     <hr>
     <div class="d-flex justify-content-end">
-    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" ><i class="fas fa-edit"></i></button>
+    <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditexperience()"><i class="fas fa-edit"></i></button>
     </div>
     <!-- <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
       <p>{{ errorMessage }}</p>
     </div> -->
     </ng-container>
 
-    <ng-template #editSection>
-      <form #addSkill="ngForm"  >
+    <ng-template #editexps>
+      <!-- <form #experience="ngForm" (ngSubmit)="addexperience(experience.value)" >
           <div class="form-group">
-              <label for="">JobTitle</label>
-              <input type="text" name="" id="">
-              <label for="">CompanyName</label>
-              <input type="text" name="" id="">
-              <label for="">Summary</label>
-              <input type="text" name="" id="">
-              <label for="">ServiceStart</label>
-              <input type="datetime" name="" id="">
-              <label for="">ServiceEnd</label>
-              <input type="datetime" name="" id="">
+              <label for="">JobTitle :</label>
+              <input type="text" name="jobTitle"  placeholder="JobTitle" required [(ngModel)]="experience.jobTitle"><br>
+              <label for="">CompanyName :</label>
+              <input type="text" name="companyName" placeholder="CompanyName" required [(ngModel)]="experience.companyName"><br>
+              <label for="">Summary :</label>
+              <input type="text" name="summary"  placeholder="Summary" required [(ngModel)]="experience.summary"><br>
+              <label for="">ServiceStart :</label>
+              <input type="date" name="serviceStart" required [(ngModel)]="experience.serviceStart"><br>
+              <label for="">ServiceEnd :</label>
+              <input type="date" name="serviceEnd" required [(ngModel)]="experience.serviceEnd">
           </div>
          
           <button type="submit" class="btn btn-primary">Save</button>
           <button type="button" class="btn btn-secondary"
-             >Cancel</button>
-      </form>
+          (click)="toggleEditexperience()" >Cancel</button>
+      </form> -->
+
+      <form (ngSubmit)= "addexperience(experience.value)" #experience = "ngForm">
+        <div class="form-group">
+            <label for="jobTitle">JobTitle :</label>
+            <input type="text" name="jobTitle"  placeholder="JobTitle" required ngModel #jobTitle="ngModel"><br>
+            <label for="companyName">CompanyName :</label>
+            <input type="text" name="companyName" placeholder="CompanyName" required ngModel #companyName="ngModel"><br>
+            <label for="summary">Summary :</label>
+            <input type="text" name="summary"  placeholder="Summary" required ngModel #summary="ngModel"><br>
+            <label for="serviceStart">ServiceStart :</label>
+            <input type="date" name="serviceStart" required ngModel #serviceStart="ngModel"><br>
+            <label for="serviceEnd">ServiceEnd :</label>
+            <input type="date" name="serviceEnd" required ngModel #serviceEnd="ngModel">
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary"
+        (click)="toggleEditexperience()" >Cancel</button>
+    </form>
     </ng-template>
   </div>
 </div>
