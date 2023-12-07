@@ -13,8 +13,17 @@ export class ProfileService {
     return this.http.get<any[]>(environment.baseurl + '/api/v1/skills')
   }
 
+  // selectedSkill(){
+  //   return this.http.post<selectedSkill[]>(environment.baseurl + '/api/v1/skills/:id')
+  // }
+
   deleteSkill(id:number){
     return this.http.delete(environment.baseurl + `/api/v1/skills/${id}`)
+
+  }
+
+  getAllQualifications(){
+    return this.http.get<any[]>(environment.baseurl+'/api/v1/qualifications')
 
   }
 }

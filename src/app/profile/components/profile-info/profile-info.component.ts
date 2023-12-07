@@ -1,9 +1,11 @@
+import { ProfileService } from 'src/app/profile/services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { ProfileService } from '../../services/profile.service';
+
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Skill } from '../../models/skill';
+import { Qualification } from '../../models/qualification';
 
 @Component({
   selector: 'app-profile-info',
@@ -16,7 +18,9 @@ export class ProfileInfoComponent implements OnInit{
   isEditQualification = false;
   isDescriptionEditMode =  false;
   skillSection:any='';
-  skill:Skill[]=[]
+  skill:Skill[]=[];
+  selectedSkills: string[] = [];
+  qualification:Qualification[]=[]
   dropDownData:any;
   errorMessage:any;
   addedSkill:any;
@@ -34,7 +38,14 @@ export class ProfileInfoComponent implements OnInit{
     this.profileService.getallskills().subscribe((res) => {
       this.skill = res;
     });
+
+    this.profileService.getAllQualifications().subscribe((res)=>{
+      this.qualification=res;
+    })
   }
+
+
+
   toggleDescriptionEditMode() {
     this.isDescriptionEditMode = !this.isDescriptionEditMode;
   }
@@ -63,6 +74,26 @@ export class ProfileInfoComponent implements OnInit{
       toggleEditqualification(){
         this.isEditQualification = !this.isEditQualification
       }
+
+    selectedSkill(){
+            
+    const selectedSkill = this.skillSection;
+
+
+    if (selectedSkill && !this.selectedSkills.includes(selectedSkill)) {
+     
+      this.selectedSkills.push(selectedSkill);
+
+   
+      this.skillSection = '';
+
+     
+      console.log('Selected Skills:', this.selectedSkills);
+    }
+  }
+
+
+
       // getProfile(){
       //   this.profileService.getAllSkill().subscribe(response=>{
       //     console.log(response);
