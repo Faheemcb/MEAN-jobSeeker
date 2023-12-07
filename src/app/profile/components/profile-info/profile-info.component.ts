@@ -5,7 +5,12 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Skill } from '../../models/skill';
+<<<<<<< HEAD
 import { Qualification } from '../../models/qualification';
+=======
+import { WorkExperience } from '../../models/WorkExperience';
+import { WorkexperienceService } from '../../services/workexperience.service';
+>>>>>>> db93d79067f884851d87a7e4e0776f35894eeeed
 
 @Component({
   selector: 'app-profile-info',
@@ -16,6 +21,7 @@ export class ProfileInfoComponent implements OnInit{
   user: any;
   isEditMode = false;
   isEditQualification = false;
+  isEditworkexperience = false;
   isDescriptionEditMode =  false;
   skillSection:any='';
   skill:Skill[]=[];
@@ -24,7 +30,8 @@ export class ProfileInfoComponent implements OnInit{
   dropDownData:any;
   errorMessage:any;
   addedSkill:any;
-  constructor(private authService: AuthService,private profileService:ProfileService) {}
+  experience:WorkExperience[]=[]
+  constructor(private authService: AuthService,private profileService:ProfileService, private experienceService: WorkexperienceService) {}
   ngOnInit() {
     // const user: any = sessionStorage.getItem('jobSeekerId') ;
     // console.log(JSON.parse(user));
@@ -94,6 +101,9 @@ export class ProfileInfoComponent implements OnInit{
 
 
 
+      toggleEditexperience(){
+        this.isEditworkexperience = !this.isEditworkexperience
+      }
       // getProfile(){
       //   this.profileService.getAllSkill().subscribe(response=>{
       //     console.log(response);
@@ -107,12 +117,23 @@ export class ProfileInfoComponent implements OnInit{
       //     // console.log(this.addedSkill[0].name)
       //   })
       // }
+
+    
       deleteSkill(id: number) {
         this.profileService.deleteSkill(id).subscribe((res) => {
           if (res) {
             alert('Skill deleted');
           }
         });
+      }
+
+      addexperience(data: WorkExperience){
+        this.experienceService.addWorkexperience(data).subscribe((res) => {
+              this.experience = res
+              if (res) {
+                alert("success")
+              }
+            })
       }
       
 }
