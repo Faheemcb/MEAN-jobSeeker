@@ -6,8 +6,5 @@ export class Profile {
     resume?: string;
     qualification?: string;
     workExperiences?: WorkExperience;
-    skills?: string;
- 
-
-
+    skills?: string[] | null;
 }
