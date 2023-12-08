@@ -69,16 +69,16 @@
                 </ng-container>
 
                 <ng-template #editSection>
-                  <form #addSkill="ngForm" >
+                  <form #addSkill="ngForm" (ngSubmit)="updateSkill(addSkill.value)" >
                       <div class="form-group">
                           <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                               [(ngModel)]="skillSection" required></textarea> -->
-                              <select name="skillSection" style="width: 300px;" >
-                                <option *ngFor="let item of skill">{{item.name}}</option>
+                              <select name="skills" style="width: 300px;" ngModel #skills="ngModel" >
+                                <option *ngFor="let item of skill" >{{item.name}}</option>
                               </select>
                       </div>
                      
-                      <button type="submit" (click)="selectedSkill()"class="btn btn-primary">Save</button>
+                      <button type="submit" class="btn btn-primary">Save</button>
                       <button type="button" class="btn btn-secondary"
                          (click)="toggleEditMode()" >Cancel</button>
                   </form>
@@ -107,11 +107,11 @@
     </ng-container>
 
     <ng-template #editSections>
-      <form #addqualification="ngForm"  >
+      <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)"  >
           <div class="form-group">
               <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                   [(ngModel)]="skillSection" required></textarea> -->
-                  <select name="qualificationsection" style="width: 300px;">
+                  <select name="qualifications" style="width: 300px;" ngModel #qualifications="ngModel">
 
                     <option *ngFor="let item of qualification">{{item.name}}</option>
                   </select>

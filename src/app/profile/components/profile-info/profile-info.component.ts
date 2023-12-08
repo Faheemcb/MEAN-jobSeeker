@@ -1,16 +1,11 @@
 import { ProfileService } from 'src/app/profile/services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-
-import { NgForm } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Skill } from '../../models/skill';
-<<<<<<< HEAD
 import { Qualification } from '../../models/qualification';
-=======
 import { WorkExperience } from '../../models/WorkExperience';
 import { WorkexperienceService } from '../../services/workexperience.service';
->>>>>>> db93d79067f884851d87a7e4e0776f35894eeeed
+import { Profile } from '../../models/Profile';
 
 @Component({
   selector: 'app-profile-info',
@@ -31,6 +26,7 @@ export class ProfileInfoComponent implements OnInit{
   errorMessage:any;
   addedSkill:any;
   experience:WorkExperience[]=[]
+  profile: Profile[]=[]
   constructor(private authService: AuthService,private profileService:ProfileService, private experienceService: WorkexperienceService) {}
   ngOnInit() {
     // const user: any = sessionStorage.getItem('jobSeekerId') ;
@@ -82,22 +78,6 @@ export class ProfileInfoComponent implements OnInit{
         this.isEditQualification = !this.isEditQualification
       }
 
-    selectedSkill(){
-            
-    const selectedSkill = this.skillSection;
-
-
-    if (selectedSkill && !this.selectedSkills.includes(selectedSkill)) {
-     
-      this.selectedSkills.push(selectedSkill);
-
-   
-      this.skillSection = '';
-
-     
-      console.log('Selected Skills:', this.selectedSkills);
-    }
-  }
 
 
 
@@ -128,12 +108,33 @@ export class ProfileInfoComponent implements OnInit{
       }
 
       addexperience(data: WorkExperience){
-        this.experienceService.addWorkexperience(data).subscribe((res) => {
-              this.experience = res
-              if (res) {
+        this.experienceService.addWorkexperience(data).subscribe((response) => {
+              this.experience = response
+              if (response) {
                 alert("success")
               }
             })
+      }
+
+      updateSkill(data: Profile){
+        this.profileService.updateProfile(data).subscribe((response) => {
+          this.profile = response
+          if (response) {
+            console.log("Updated");
+            
+          }
+        })
+
+      }
+
+      updateQualification(data: Qualification){
+        this.profileService.updateQualification(data).subscribe((response) => {
+          this.qualification = response
+          if (response) {
+            console.log("Updated");
+            
+          }
+        })
       }
       
 }
