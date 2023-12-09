@@ -47,8 +47,8 @@ export class ProfileInfoComponent implements OnInit{
       
     });
 
-const jobseekerid = '6572bc4e26cf09a55761c405';
-const jobseekerprofileid = '6572bc4e26cf09a55761c40b';
+const jobseekerid = '65729bb7f2e09f18e2b2b244';
+const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
 
 this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
   this.profile = [profile];
@@ -159,9 +159,9 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
 
       }
 
-      updateQualification(data: Qualification){
-        this.profileService.updateQualification(data).subscribe((response) => {
-          this.qualification = response
+      updateQualification(data: Profile){
+        this.profileService.updateProfile(data).subscribe((response) => {
+          this.profile = response
           if (response) {
             console.log("Updated");
             

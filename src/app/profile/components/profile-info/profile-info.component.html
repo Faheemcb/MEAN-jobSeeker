@@ -39,15 +39,12 @@
                   </h2>
                 </div>
 
-
-
-
 <div *ngIf="isFormVisible">
   <form>
  
     <div class="form-group" *ngFor="let item of profile">
-     <input type="text" name="profilename" style="width: 300px;" ngModel #profilename="ngModel" placeholder="{{item.profileName}}" >
-     </div>
+      <input type="text" name="profilename" style="width: 300px;">
+    </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-secondary" (click)="toggleFormVisibility()">Close</button>
@@ -126,7 +123,7 @@
                 </ng-container>
 
                 <ng-template #editSection>
-                  <form #addSkill="ngForm" (ngSubmit)="updateSkill(addSkill.value)" >
+                  <form #addSkill="ngForm" (ngSubmit)="updateSkill(addSkill.value)" (ngSubmit)="toggleEditMode()" >
                       <div class="form-group">
                           <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                               [(ngModel)]="skillSection" required></textarea> -->
@@ -164,7 +161,7 @@
     </ng-container>
 
     <ng-template #editSections>
-      <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)"  >
+      <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)" (ngSubmit)="toggleEditqualification()" >
           <div class="form-group">
               <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                   [(ngModel)]="skillSection" required></textarea> -->
