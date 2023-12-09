@@ -20,33 +20,113 @@
                   </div>
                 </label>
                 <input type="file" id="profilePictureInput" class="d-none">
+
+
+                <!-- ------------------------------------------------------------------------ -->
+                <!-- <div class="container">
                 <div *ngFor="let item of profile">
                   <h2 class="h5-fluid text-center text-dark">{{item.profileName}}</h2> 
+                  <button data-toggle="collapse"><i class="fas fa-edit"></i></button>
                 </div>
-                
+                </div>
                <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
-                  <form>
+                  <form> -->
+
+
+
                     <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
                                         <input type="file" class="form-control d-none" id="fileInput" name="fileInput"> -->
                     <!-- <button type="button" class="btn  btn-sm btn-outline-primary">Upload</button> -->
-                    <label for="fileInput" class="form-label"><img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
+                    <!-- <label for="fileInput" class="form-label"><img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
                     <div class="input-group">
                       <input type="file" class="form-control" id="fileInput" aria-describedby="uploadButton">
                       <button class="btn btn-primary" type="button" id="uploadButton">Upload</button>
                     </div>
                   </form>
                 </div>
-                <textarea name="" id="" cols="30" rows="5">Profile summary</textarea> 
-                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button>
+                <div *ngFor="let item of profile">
+                  <p class="h5-fluid text-center text-dark">{{item.profileSummary}}</p> 
+                </div>
               </div>
             </div>
-          </div>
-          <!-- </div>
-                </div> -->
-        </div>
+          </div> -->
+<!--          
       </div>
 
+    </div> -->
+    <!-- ----------------------------------------------------------------------------------- -->
+
+<ng-container *ngIf="!isEditName; else  editname">
+<ng-container *ngFor="let item of profile">
+ <h2>{{item.profileName}}</h2>
+</ng-container>
+<div class="d-flex justify-content-end">
+  <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditName()" ><i class="fas fa-edit"></i></button>
+  </div>
+</ng-container>
+
+
+  <ng-template #editname>
+    <form #addname="ngForm" (ngSubmit)="updateName(addname.value)"  (ngSubmit)="toggleEditName()"  >
+        <div class="form-group">
+            <!-- <textarea class="form-control" id="skillSection" name="skillSection"
+                [(ngModel)]="skillSection" required></textarea> -->
+              
+              <div *ngFor="let item of profile" >
+      <input type="text"  name="profileName" [(ngModel)]="item.profileName" style="width: 300px;"></div>
+               
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary"
+           (click)="toggleEditName()" >Cancel</button>
+    </form>
+  </ng-template>
+
+  <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+    <form> 
+
+      <div class="input-group">
+        <input type="file" class="form-control" id="fileInput" aria-describedby="uploadButton">
+        <button class="btn btn-primary" type="button" id="uploadButton">Upload</button>
+      </div>
+    </form>
+  </div>
+
+
+  <ng-container *ngIf="!isEditSummary; else  editsummary">
+    <div *ngFor="let item of profile">
+     <h2>{{item.profileSummary}}</h2>
     </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditSummary()" ><i class="fas fa-edit"></i></button>
+      </div>
+    </ng-container>
+
+    
+      <ng-template #editsummary>
+        <form #addsummary="ngForm" (ngSubmit)="updateSummary(addsummary.value)"  (ngSubmit)="toggleEditSummary()"  >
+            <div class="form-group">
+                <!-- <textarea class="form-control" id="skillSection" name="skillSection"
+                    [(ngModel)]="skillSection" required></textarea> -->
+                  
+                  <div *ngFor="let item of profile" >
+          <input type="text"  name="profileSummary" [(ngModel)]="item.profileSummary" style="width: 300px;"></div>
+                   
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary"
+               (click)="toggleEditSummary()" >Cancel</button>
+            
+ </form>
+ </ng-template>
+</div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<!-- --------------------------------------------------------------------- -->
     <div class="col-md-7">
       <div class="container-fluid">
         <div class="row">
@@ -133,15 +213,15 @@
     <ng-container *ngIf="!isEditworkexperience; else editexps" >
     <ng-container>
       <ul>
-        <div *ngFor="let individualProfile of profile">
-          <h4>JobTitle: {{ individualProfile.workExperiences?.jobTitle }}</h4>
-          <h4>CompanyName: {{ individualProfile.workExperiences?.companyName }}</h4>
-          <h4>Summary: {{ individualProfile.workExperiences?.summary }}</h4>
-          <h4>ServiceStart: {{ individualProfile.workExperiences?.serviceStart | date }}</h4>
-          <h4>ServiceEnd: {{ individualProfile.workExperiences?.serviceEnd | date }}</h4>
+        <div *ngFor="let item of profile">
+          <div *ngFor="let workExperience of item.workExperiences">
+            <h5>JobTitle: {{ workExperience.jobTitle }}</h5>
+            <h5>CompanyName: {{ workExperience.companyName }}</h5>
+            <h5>Summary: {{ workExperience.summary }}</h5>
+            <h5>ServiceStart: {{ workExperience.serviceStart }}</h5>
+            <h5>ServiceEnd: {{ workExperience.serviceEnd }}</h5>
+          </div>
         </div>
-        
-        
       </ul>
       </ng-container>
     <hr>
@@ -173,7 +253,7 @@
           (click)="toggleEditexperience()" >Cancel</button>
       </form> -->
 
-      <form (ngSubmit)= "addexperience(experience.value)" #experience = "ngForm">
+      <form (ngSubmit)= "updateexperience(experience.value)" #experience = "ngForm">
         <div class="form-group">
             <label for="jobTitle">JobTitle :</label>
             <input type="text" name="jobTitle"  placeholder="JobTitle" required ngModel #jobTitle="ngModel"><br>

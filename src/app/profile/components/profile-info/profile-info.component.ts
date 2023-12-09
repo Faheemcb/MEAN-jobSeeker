@@ -6,6 +6,7 @@ import { Qualification } from '../../models/qualification';
 import { WorkExperience } from '../../models/WorkExperience';
 import { WorkexperienceService } from '../../services/workexperience.service';
 import { Profile } from '../../models/Profile';
+import { response } from 'src/app/jobs/models/job';
 
 @Component({
   selector: 'app-profile-info',
@@ -15,6 +16,8 @@ import { Profile } from '../../models/Profile';
 export class ProfileInfoComponent implements OnInit{
   user: any;
   isEditMode = false;
+  isEditName=false;
+  isEditSummary=false;
   isEditQualification = false;
   isEditworkexperience = false;
   isDescriptionEditMode =  false;
@@ -44,11 +47,17 @@ export class ProfileInfoComponent implements OnInit{
       
     });
 
+<<<<<<< HEAD
 const jobseekerid = '65729dc9a9665175aef9708f';
 const jobseekerprofileid = '65729dc9a9665175aef97095';
+=======
+const jobseekerid = '6572bc4e26cf09a55761c405';
+const jobseekerprofileid = '6572bc4e26cf09a55761c40b';
+>>>>>>> 01c4ab3804058325ccf3c656f425c0702e62d645
 
 this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
   this.profile = [profile];
+  console.log(profile);
 });
 
 
@@ -85,6 +94,14 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
         this.isEditMode = !this.isEditMode;
       } 
 
+      toggleEditName() {
+        this.isEditName = !this.isEditName;
+      } 
+
+      toggleEditSummary(){
+        this.isEditSummary=!this.isEditSummary;
+      }
+
       toggleEditqualification(){
         this.isEditQualification = !this.isEditQualification
       }
@@ -109,7 +126,30 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
       //   })
       // }
 
+
+      updateName(data: Profile){
+        this.profileService.updateProfile(data).subscribe((response) => {
+          this.profile = response
+          if (response) {
+            console.log("Updated");
+            
+          }
+        })
+
+      }
     
+      updateSummary(data:Profile){
+        this.profileService.updateProfile(data).subscribe((response)=>{
+          this.profile=response;
+          if(response){
+             console.log("updated");
+          }
+        })
+
+      }
+
+
+
       deleteSkill(id: number) {
         this.profileService.deleteSkill(id).subscribe((res) => {
           if (res) {
@@ -118,9 +158,9 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
         });
       }
 
-      addexperience(data: WorkExperience){
-        this.experienceService.addWorkexperience(data).subscribe((response) => {
-              this.experience = response
+      updateexperience(data: Profile){
+        this.profileService.updateProfile(data).subscribe((response) => {
+              this.profile = response
               if (response) {
                 alert("success")
               }
