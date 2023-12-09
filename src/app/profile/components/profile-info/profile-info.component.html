@@ -21,59 +21,41 @@
                 </label>
 
                 
-                <!-- <input type="file" id="profilePictureInput" class="d-none">
-                <ng-container  *ngIf="!isEditMode; else editSection">
-                  <h5 class="h5-fluid text-center text-dark">Profile name <button class="btn edit-button" (click)="toggleEditPname()" data- data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button></h5>
-                </ng-container> -->
-<!-- 
-                <ng-template #editSections>
-                  <form #addname="ngForm" (ngSubmit)="updatename(addname.value)"  >
-                      <div class="form-group">
-                          
-                              <select name="profilename" style="width: 300px;" ngModel #profilename="ngModel">
-            
-                                <option *ngFor="let item of profile">{{item.name}}</option>
-                              </select>
-                      </div>
-                     
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-secondary"
-                      (click)="toggleEditProfilename()" >Cancel</button>
-                  </form>
-                </ng-template> -->
-
+                
+         
 
 
 
                 <!-- Your profile name display -->
-<h5 class="h5-fluid text-center text-dark">
-  Profile name
-  <button class="btn edit-button" (click)="toggleFormVisibility()">
-    <i class="fas fa-edit"></i>
-  </button>
-</h5>
+
+                <input type="file" id="profilePictureInput" class="d-none">
+                <div *ngFor="let item of profile">
+                 
+                  <h2 class="h5-fluid text-center text-dark">
+                    {{item.profileName}}
+                    <button class="btn edit-button" (click)="toggleFormVisibility()">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </h2>
+                </div>
+
+
 
 
 <div *ngIf="isFormVisible">
   <form>
-  <!-- <form #addname="ngForm" (ngSubmit)="updatename(addname.value)"> -->
-    <div class="form-group">
-      <input type="text" name="profilename" style="width: 300px;" ngModel #profilename="ngModel">
-        <!-- <option *ngFor="let item of profile">{{ item.name }}</option> -->
-     
-    </div>
+ 
+    <div class="form-group" *ngFor="let item of profile">
+     <input type="text" name="profilename" style="width: 300px;" ngModel #profilename="ngModel" placeholder="{{item.profileName}}" >
+     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-secondary" (click)="toggleFormVisibility()">Close</button>
   </form>
 </div>
+<hr>
 
-                
-
-                <hr>
-              
-                
-             <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+<div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
                   <form>
                     <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
                                         <input type="file" class="form-control d-none" id="fileInput" name="fileInput"> -->
@@ -130,8 +112,8 @@
                 <h5 class="h5-fluid text-dark">SKILLS</h5>
                 <ng-container *ngIf="!isEditMode; else editSection" >
                 <ng-container >
-                  <ul>
-                    <li>SWIFT</li>
+                  <ul *ngFor="let item of profile">
+                    <li><h5>{{item.skills}}</h5></li>
                   </ul>
                 </ng-container>
                 <hr>
@@ -168,8 +150,8 @@
     <h5 class="h5-fluid text-dark">Qualification</h5>
     <ng-container *ngIf="!isEditQualification; else editSections"  >
     <ng-container>
-      <ul>
-        <li>MBA</li>
+      <ul *ngFor="let item of profile">
+        <li><h5>{{item.qualifications}}</h5></li>
       </ul>
       </ng-container>
     <hr>
@@ -207,7 +189,15 @@
     <ng-container *ngIf="!isEditworkexperience; else editexps" >
     <ng-container>
       <ul>
-        <li>REACT JS DEVELOPER</li>
+        <div *ngFor="let item of profile">
+          <h5>JobTitle: {{ item.workExperiences?.jobTitle}}</h5>
+          <!-- <h5>CompanyName: {{ individualProfile.workExperiences?.companyName }}</h5>
+          <h5>Summary: {{ individualProfile.workExperiences?.summary }}</h5>
+          <h5>ServiceStart: {{ individualProfile.workExperiences?.serviceStart | date }}</h5>
+          <h5>ServiceEnd: {{ individualProfile.workExperiences?.serviceEnd | date }}</h5> -->
+        </div>
+        
+        
       </ul>
       </ng-container>
     <hr>
