@@ -15,10 +15,13 @@ import { Profile } from '../../models/Profile';
 export class ProfileInfoComponent implements OnInit{
   user: any;
   isEditMode = false;
+  isEditSummary=false;
+  isFormVisible = false;
   isEditQualification = false;
   isEditworkexperience = false;
   isDescriptionEditMode =  false;
   skillSection:any='';
+  profilename:any='';
   skill:Skill[]=[];
   selectedSkills: string[] = [];
   qualification:Qualification[]=[]
@@ -52,6 +55,8 @@ export class ProfileInfoComponent implements OnInit{
   toggleDescriptionEditMode() {
     this.isDescriptionEditMode = !this.isDescriptionEditMode;
   }
+
+
   // updateProfile(form:NgForm) {
   //   alert(form.value.skillSection);
   //   const skillId=form.value.skillSection
@@ -74,11 +79,23 @@ export class ProfileInfoComponent implements OnInit{
         this.isEditMode = !this.isEditMode;
       } 
 
+     
+
+      toggleFormVisibility() {
+        this.isFormVisible = !this.isFormVisible;
+      }
+    
+
+    
+  
+
       toggleEditqualification(){
         this.isEditQualification = !this.isEditQualification
       }
 
-
+      toggleEditsummary(){
+        this. isEditSummary=!this. isEditSummary
+      }
 
 
       toggleEditexperience(){
@@ -98,6 +115,8 @@ export class ProfileInfoComponent implements OnInit{
       //   })
       // }
 
+
+    
     
       deleteSkill(id: number) {
         this.profileService.deleteSkill(id).subscribe((res) => {

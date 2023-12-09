@@ -19,10 +19,61 @@
                     </div>
                   </div>
                 </label>
-                <input type="file" id="profilePictureInput" class="d-none">
-                <h5 class="h5-fluid text-center text-dark">Profile Name   <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button></h5> 
+
                 
-               <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+                <!-- <input type="file" id="profilePictureInput" class="d-none">
+                <ng-container  *ngIf="!isEditMode; else editSection">
+                  <h5 class="h5-fluid text-center text-dark">Profile name <button class="btn edit-button" (click)="toggleEditPname()" data- data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button></h5>
+                </ng-container> -->
+<!-- 
+                <ng-template #editSections>
+                  <form #addname="ngForm" (ngSubmit)="updatename(addname.value)"  >
+                      <div class="form-group">
+                          
+                              <select name="profilename" style="width: 300px;" ngModel #profilename="ngModel">
+            
+                                <option *ngFor="let item of profile">{{item.name}}</option>
+                              </select>
+                      </div>
+                     
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <button type="button" class="btn btn-secondary"
+                      (click)="toggleEditProfilename()" >Cancel</button>
+                  </form>
+                </ng-template> -->
+
+
+
+
+                <!-- Your profile name display -->
+<h5 class="h5-fluid text-center text-dark">
+  Profile name
+  <button class="btn edit-button" (click)="toggleFormVisibility()">
+    <i class="fas fa-edit"></i>
+  </button>
+</h5>
+
+
+<div *ngIf="isFormVisible">
+  <form>
+  <!-- <form #addname="ngForm" (ngSubmit)="updatename(addname.value)"> -->
+    <div class="form-group">
+      <input type="text" name="profilename" style="width: 300px;" ngModel #profilename="ngModel">
+        <!-- <option *ngFor="let item of profile">{{ item.name }}</option> -->
+     
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="toggleFormVisibility()">Close</button>
+  </form>
+</div>
+
+                
+
+                <hr>
+              
+                
+             <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
                   <form>
                     <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
                                         <input type="file" class="form-control d-none" id="fileInput" name="fileInput"> -->
@@ -34,17 +85,42 @@
                     </div>
                   </form>
                 </div>
-                <textarea name="" id="" cols="30" rows="5">Profile summary</textarea> 
-                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button>
+
+
+
+                <!-- <ng-template #editSections>
+                  <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)"  >
+                      <div class="form-group">
+                          
+                              <select name="qualifications" style="width: 300px;" ngModel #qualifications="ngModel">
+            
+                                <option *ngFor="let item of qualification">{{item.name}}</option>
+                              </select>
+                      </div>
+                     
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <button type="button" class="btn btn-secondary"
+                      (click)="toggleEditqualification()"  >Cancel</button>
+                  </form>
+                </ng-template>
+
+                <ng-container  *ngIf="!isEditMode; else editSection">
+                  <h5 class="h5-fluid text-center text-dark">Profile Summary   <button class="btn edit-button"  (click)=" toggleEditsummary()" data-toggle="collapse" data-target="#aboutForm" ><i class="fas fa-edit"></i></button></h5> 
+              
+                  </ng-container> -->
+
+    
               </div>
             </div>
           </div>
-          <!-- </div>
-                </div> -->
+         
         </div>
       </div>
 
     </div>
+
+
+  
     <div class="col-md-7">
       <div class="container-fluid">
         <div class="row">
@@ -197,6 +273,6 @@
 
 
           </div>
+        
         </div>
-
       
