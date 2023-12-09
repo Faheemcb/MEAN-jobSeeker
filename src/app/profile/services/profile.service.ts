@@ -26,7 +26,7 @@ export class ProfileService {
   }
 
   updateProfile(data:Profile){
-    return this.http.put<Profile[]>(environment.baseurl+ '/api/v1/jobseekers/65729bb7f2e09f18e2b2b244/profiles/65729bb7f2e09f18e2b2b24a',data)
+    return this.http.put<Profile[]>(environment.baseurl+ '/api/v1/jobseekers/6572bc4e26cf09a55761c405/profiles/6572bc4e26cf09a55761c40b',data)
   }
 
   deleteSkill(id:number){
