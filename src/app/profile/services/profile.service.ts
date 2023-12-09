@@ -18,6 +18,10 @@ export class ProfileService {
     return this.http.get<any[]>(environment.baseurl + '/api/v1/skills')
   }
 
+  getallprofiles(jobseekerid:string,jobseekerprofileid:string){
+    return this.http.get<Profile>(`${environment.baseurl}/api/v1/jobseekers/${jobseekerid}/profiles/${jobseekerprofileid}` )
+  }
+
   // selectedSkill(){
   //   return this.http.post<selectedSkill[]>(environment.baseurl + '/api/v1/skills/:id')
   // }

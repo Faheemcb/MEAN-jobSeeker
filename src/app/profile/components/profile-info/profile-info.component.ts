@@ -40,7 +40,20 @@ export class ProfileInfoComponent implements OnInit{
     // this.getSkillByUser();
     this.profileService.getallskills().subscribe((res) => {
       this.skill = res;
+      console.log(res);
+      
     });
+
+const jobseekerid = '65729bb7f2e09f18e2b2b244';
+const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
+
+this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
+  this.profile = [profile];
+  console.log(profile);
+  
+});
+
+
 
     this.profileService.getAllQualifications().subscribe((res)=>{
       this.qualification=res;
