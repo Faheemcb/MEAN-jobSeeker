@@ -44,8 +44,8 @@ export class ProfileInfoComponent implements OnInit{
       
     });
 
-const jobseekerid = '65729bb7f2e09f18e2b2b244';
-const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
+const jobseekerid = '65729dc9a9665175aef9708f';
+const jobseekerprofileid = '65729dc9a9665175aef97095';
 
 this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
   this.profile = [profile];
