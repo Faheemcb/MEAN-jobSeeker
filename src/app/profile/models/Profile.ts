@@ -5,6 +5,6 @@ export class Profile {
     profileSummary?: string;
     resume?: string;
     qualifications?: string;
-    workExperiences?: WorkExperience;
+    workExperiences?: WorkExperience[]
     skills?: string[] | null;
 }

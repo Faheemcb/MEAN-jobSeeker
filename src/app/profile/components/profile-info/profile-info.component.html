@@ -36,8 +36,9 @@
                     </div>
                   </form>
                 </div>
-                <textarea name="" id="" cols="30" rows="5">Profile summary</textarea> 
-                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button>
+                <div *ngFor="let item of profile">
+                  <p class="h5-fluid text-center text-dark">{{item.profileSummary}}</p> 
+                </div>
               </div>
             </div>
           </div>
@@ -133,15 +134,15 @@
     <ng-container *ngIf="!isEditworkexperience; else editexps" >
     <ng-container>
       <ul>
-        <div *ngFor="let individualProfile of profile">
-          <h4>JobTitle: {{ individualProfile.workExperiences?.jobTitle }}</h4>
-          <h4>CompanyName: {{ individualProfile.workExperiences?.companyName }}</h4>
-          <h4>Summary: {{ individualProfile.workExperiences?.summary }}</h4>
-          <h4>ServiceStart: {{ individualProfile.workExperiences?.serviceStart | date }}</h4>
-          <h4>ServiceEnd: {{ individualProfile.workExperiences?.serviceEnd | date }}</h4>
+        <div *ngFor="let item of profile">
+          <div *ngFor="let workExperience of item.workExperiences">
+            <h5>JobTitle: {{ workExperience.jobTitle }}</h5>
+            <h5>CompanyName: {{ workExperience.companyName }}</h5>
+            <h5>Summary: {{ workExperience.summary }}</h5>
+            <h5>ServiceStart: {{ workExperience.serviceStart }}</h5>
+            <h5>ServiceEnd: {{ workExperience.serviceEnd }}</h5>
+          </div>
         </div>
-        
-        
       </ul>
       </ng-container>
     <hr>
@@ -173,7 +174,7 @@
           (click)="toggleEditexperience()" >Cancel</button>
       </form> -->
 
-      <form (ngSubmit)= "addexperience(experience.value)" #experience = "ngForm">
+      <form (ngSubmit)= "updateexperience(experience.value)" #experience = "ngForm">
         <div class="form-group">
             <label for="jobTitle">JobTitle :</label>
             <input type="text" name="jobTitle"  placeholder="JobTitle" required ngModel #jobTitle="ngModel"><br>

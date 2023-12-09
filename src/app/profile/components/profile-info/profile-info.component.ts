@@ -49,6 +49,7 @@ const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
 
 this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
   this.profile = [profile];
+  console.log(profile);
 });
 
 
@@ -118,9 +119,9 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
         });
       }
 
-      addexperience(data: WorkExperience){
-        this.experienceService.addWorkexperience(data).subscribe((response) => {
-              this.experience = response
+      updateexperience(data: Profile){
+        this.profileService.updateProfile(data).subscribe((response) => {
+              this.profile = response
               if (response) {
                 alert("success")
               }

@@ -26,8 +26,14 @@ export class ProfileService {
   }
 
   updateProfile(data:Profile){
-    return this.http.put<Profile[]>(environment.baseurl+ '/api/v1/jobseekers/65729bb7f2e09f18e2b2b244/profiles/65729bb7f2e09f18e2b2b24a',data)
+    const jobseekerid = '65729bb7f2e09f18e2b2b244';
+ const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
+
+    return this.http.put<Profile[]>(`${environment.baseurl}/api/v1/jobseekers/${jobseekerid}/profiles/${jobseekerprofileid}`,data)
   }
+
+
+
 
   deleteSkill(id:number){
     return this.http.delete(environment.baseurl + `/api/v1/skills/${id}`)
