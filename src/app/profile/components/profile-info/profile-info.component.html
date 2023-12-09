@@ -19,40 +19,12 @@
                     </div>
                   </div>
                 </label>
-
-                
-                
-         
-
-
-
-                <!-- Your profile name display -->
-
                 <input type="file" id="profilePictureInput" class="d-none">
                 <div *ngFor="let item of profile">
-                 
-                  <h2 class="h5-fluid text-center text-dark">
-                    {{item.profileName}}
-                    <button class="btn edit-button" (click)="toggleFormVisibility()">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                  </h2>
+                  <h2 class="h5-fluid text-center text-dark">{{item.profileName}}</h2> 
                 </div>
-
-<div *ngIf="isFormVisible">
-  <form>
- 
-    <div class="form-group" *ngFor="let item of profile">
-      <input type="text" name="profilename" style="width: 300px;">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-secondary" (click)="toggleFormVisibility()">Close</button>
-  </form>
-</div>
-<hr>
-
-<div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+                
+               <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
                   <form>
                     <!-- <label for="fileInput" class="form-label"> <img class="img-fluid " src="assets/images/upload 1.png">RESUME</label>
                                         <input type="file" class="form-control d-none" id="fileInput" name="fileInput"> -->
@@ -64,42 +36,17 @@
                     </div>
                   </form>
                 </div>
-
-
-
-                <!-- <ng-template #editSections>
-                  <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)"  >
-                      <div class="form-group">
-                          
-                              <select name="qualifications" style="width: 300px;" ngModel #qualifications="ngModel">
-            
-                                <option *ngFor="let item of qualification">{{item.name}}</option>
-                              </select>
-                      </div>
-                     
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-secondary"
-                      (click)="toggleEditqualification()"  >Cancel</button>
-                  </form>
-                </ng-template>
-
-                <ng-container  *ngIf="!isEditMode; else editSection">
-                  <h5 class="h5-fluid text-center text-dark">Profile Summary   <button class="btn edit-button"  (click)=" toggleEditsummary()" data-toggle="collapse" data-target="#aboutForm" ><i class="fas fa-edit"></i></button></h5> 
-              
-                  </ng-container> -->
-
-    
+                <textarea name="" id="" cols="30" rows="5">Profile summary</textarea> 
+                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm"><i class="fas fa-edit"></i></button>
               </div>
             </div>
           </div>
-         
+          <!-- </div>
+                </div> -->
         </div>
       </div>
 
     </div>
-
-
-  
     <div class="col-md-7">
       <div class="container-fluid">
         <div class="row">
@@ -123,7 +70,7 @@
                 </ng-container>
 
                 <ng-template #editSection>
-                  <form #addSkill="ngForm" (ngSubmit)="updateSkill(addSkill.value)" (ngSubmit)="toggleEditMode()" >
+                  <form #addSkill="ngForm" (ngSubmit)="updateSkill(addSkill.value)"  (ngSubmit)="toggleEditMode()" >
                       <div class="form-group">
                           <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                               [(ngModel)]="skillSection" required></textarea> -->
@@ -161,7 +108,7 @@
     </ng-container>
 
     <ng-template #editSections>
-      <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)" (ngSubmit)="toggleEditqualification()" >
+      <form #addqualification="ngForm" (ngSubmit)="updateQualification(addqualification.value)" (ngSubmit)="toggleEditqualification()"  >
           <div class="form-group">
               <!-- <textarea class="form-control" id="skillSection" name="skillSection"
                   [(ngModel)]="skillSection" required></textarea> -->
@@ -186,9 +133,15 @@
     <ng-container *ngIf="!isEditworkexperience; else editexps" >
     <ng-container>
       <ul>
-        <div *ngFor="let item of profile">
-          <h5>JobTitle: {{ item.workExperiences?.jobTitle}}</h5>
-        </div> 
+        <div *ngFor="let individualProfile of profile">
+          <h4>JobTitle: {{ individualProfile.workExperiences?.jobTitle }}</h4>
+          <h4>CompanyName: {{ individualProfile.workExperiences?.companyName }}</h4>
+          <h4>Summary: {{ individualProfile.workExperiences?.summary }}</h4>
+          <h4>ServiceStart: {{ individualProfile.workExperiences?.serviceStart | date }}</h4>
+          <h4>ServiceEnd: {{ individualProfile.workExperiences?.serviceEnd | date }}</h4>
+        </div>
+        
+        
       </ul>
       </ng-container>
     <hr>
@@ -254,6 +207,6 @@
 
 
           </div>
-        
         </div>
+
       

@@ -15,13 +15,10 @@ import { Profile } from '../../models/Profile';
 export class ProfileInfoComponent implements OnInit{
   user: any;
   isEditMode = false;
-  isEditSummary=false;
-  isFormVisible = false;
   isEditQualification = false;
   isEditworkexperience = false;
   isDescriptionEditMode =  false;
   skillSection:any='';
-  profilename:any='';
   skill:Skill[]=[];
   selectedSkills: string[] = [];
   qualification:Qualification[]=[]
@@ -52,8 +49,6 @@ const jobseekerprofileid = '65729bb7f2e09f18e2b2b24a';
 
 this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((profile: Profile) => {
   this.profile = [profile];
-  console.log(profile);
-  
 });
 
 
@@ -68,8 +63,6 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
   toggleDescriptionEditMode() {
     this.isDescriptionEditMode = !this.isDescriptionEditMode;
   }
-
-
   // updateProfile(form:NgForm) {
   //   alert(form.value.skillSection);
   //   const skillId=form.value.skillSection
@@ -92,23 +85,11 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
         this.isEditMode = !this.isEditMode;
       } 
 
-     
-
-      toggleFormVisibility() {
-        this.isFormVisible = !this.isFormVisible;
-      }
-    
-
-    
-  
-
       toggleEditqualification(){
         this.isEditQualification = !this.isEditQualification
       }
 
-      toggleEditsummary(){
-        this. isEditSummary=!this. isEditSummary
-      }
+
 
 
       toggleEditexperience(){
@@ -128,8 +109,6 @@ this.profileService.getallprofiles(jobseekerid, jobseekerprofileid).subscribe((p
       //   })
       // }
 
-
-    
     
       deleteSkill(id: number) {
         this.profileService.deleteSkill(id).subscribe((res) => {
